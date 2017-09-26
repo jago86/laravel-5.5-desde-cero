@@ -82,6 +82,16 @@
                     Mis notas
                 </div>
 
+                @foreach ($notes as $note)
+                    <h2>
+                        {{ $note['title'] }}
+                        @if($note['important'])
+                            *
+                        @endif
+                    </h2>
+                    <p>{{ $note['body'] }}</p>
+                @endforeach
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>

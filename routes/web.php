@@ -12,7 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $notes = [
+        [
+            'title' => 'Rutas Laravel',
+            'body' => 'Las rutas se definen en el archivo routes/web.php',
+            'important' => true
+        ],
+        [
+            'title' => 'Blade',
+            'body' => 'Blade es el motor de plantillas de Laravel',
+            'important' => true
+        ],
+    ];
+    return view('welcome', ['notes' => $notes]);
 });
 
 Route::get('/contact', function () {
