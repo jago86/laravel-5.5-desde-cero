@@ -11,20 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    $notes = [
-        [
-            'title' => 'Rutas Laravel',
-            'body' => 'Las rutas se definen en el archivo routes/web.php',
-            'important' => true
-        ],
-        [
-            'title' => 'Blade',
-            'body' => 'Blade es el motor de plantillas de Laravel',
-            'important' => true
-        ],
-    ];
-    return view('welcome', ['notes' => $notes]);
+Route::get('/notes', function () {
+    $notes = DB::table('notes')->get();
+
+    return view('notes/index', ['notes' => $notes]);
+});
+
+Route::get('/notes/{id}', function ($id) {
+    $note = DB::table('notes')->find($id);
+
+    return view('notes/show', ['note' => $note]);
 });
 
 Route::get('/contact', function () {
