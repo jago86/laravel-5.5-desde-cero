@@ -7,7 +7,13 @@
     <ul>
         @foreach ($notes as $note)
             <li>
-                <a href="notes/{{ $note->id }}">{{ $note->title }} {{ ($note->important) ? '*' : '' }}</a>
+                <a href="/notes/{{ $note->id }}">
+                    {{ $note->title }}
+
+                    @if ($note->isImportant())
+                        *
+                    @endif
+                </a>
             </li>
         @endforeach
     </ul>
