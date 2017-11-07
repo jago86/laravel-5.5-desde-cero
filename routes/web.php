@@ -1,19 +1,9 @@
 <?php
 use App\Note;
 
-Route::get('/notes', function () {
-    // $notes = DB::table('notes')->get();
-    $notes = Note::all();
+Route::get('/notes', 'NotesController@index');
 
-    return view('notes/index', ['notes' => $notes]);
-});
-
-Route::get('/notes/{id}', function ($id) {
-    // $note = DB::table('notes')->find($id);
-    $note = Note::find(1);
-
-    return view('notes/show', ['note' => $note]);
-});
+Route::get('/notes/{id}', 'NotesController@show');
 
 Route::get('/contact', function () {
     return view('contact');
