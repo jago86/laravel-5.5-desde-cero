@@ -1,5 +1,8 @@
 <?php
-use App\Note;
+
+Route::get('/', function(){
+    return view('welcome');
+});
 
 Route::get('/notes', 'NotesController@index');
 
