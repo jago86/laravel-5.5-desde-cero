@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Mis notas</title>
-    <link rel="stylesheet" href="/css/app.css" />
-</head>
-<body>
-    <div class="container">
-        <h1>Mis notas</h1>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          Launch demo modal
-        </button>
+@extends('layouts.app')
 
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
+@section('title')
+  Binenvenido a {{ config('app.name') }}
+@endsection
 
-    <script src="/js/app.js"></script>
-</body>
-</html>
+@section('content')
+  <h1>Binenvenido a {{ config('app.name') }}</h1>
+@endsection
