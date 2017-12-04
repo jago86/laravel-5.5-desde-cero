@@ -14,10 +14,8 @@ class NotesController extends Controller
         return view('notes/index', ['notes' => $notes]);
     }
 
-    public function show($id)
+    public function show(Note $note)
     {
-        $note = Note::find(1);
-
         return view('notes/show', ['note' => $note]);
     }
 
