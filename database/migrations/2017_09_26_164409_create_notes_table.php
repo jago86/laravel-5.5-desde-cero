@@ -17,7 +17,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->boolean('important');
+            $table->boolean('important')->default(false);
             $table->timestamps();
         });
     }

@@ -16,7 +16,19 @@ class NotesController extends Controller
 
     public function show(Note $note)
     {
-        return view('notes/show', ['note' => $note]);
+        return view('notes.show', ['note' => $note]);
+    }
+
+    public function create()
+    {
+        return view('notes.create');
+    }
+
+    public function store()
+    {
+        Note::create(request()->all());
+
+        return redirect('/notes');
     }
 
 
