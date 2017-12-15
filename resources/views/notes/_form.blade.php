@@ -10,6 +10,7 @@
 
 <div class="checkbox">
     <label>
+        <input type="hidden" name="important" value="0">
         <input type="checkbox" value="1" name="important"
             @isset ($note)
                 {{ $note->isImportant() ? 'checked' : '' }}

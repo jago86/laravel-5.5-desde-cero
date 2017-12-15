@@ -36,5 +36,12 @@ class NotesController extends Controller
         return view('notes.edit', compact('note'));
     }
 
+    public function update(Note $note)
+    {
+        $note->update(request()->all());
+
+        return redirect('/notes');
+    }
+
 
 }
