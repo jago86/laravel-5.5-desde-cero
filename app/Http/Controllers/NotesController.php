@@ -31,5 +31,10 @@ class NotesController extends Controller
         return redirect('/notes');
     }
 
+    public function edit(Note $note)
+    {
+        return view('notes.edit', compact('note'));
+    }
+
 
 }
