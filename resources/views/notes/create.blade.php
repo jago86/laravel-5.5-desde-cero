@@ -9,6 +9,8 @@
     {{ csrf_field() }}
     <legend>Crear nueva nota</legend>
 
+    @include('layouts._validation-errors')
+
     @include('notes._form')
 
     <button type="submit" class="btn btn-primary">Crear</button>

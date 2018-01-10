@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use Illuminate\Http\Request;
+use App\Http\Requests\NotesRequest;
 
 class NotesController extends Controller
 {
@@ -24,8 +25,9 @@ class NotesController extends Controller
         return view('notes.create');
     }
 
-    public function store()
+    public function store(NotesRequest $request)
     {
+
         Note::create(request()->all());
 
         return redirect('/notes');
@@ -36,8 +38,9 @@ class NotesController extends Controller
         return view('notes.edit', compact('note'));
     }
 
-    public function update(Note $note)
+    public function update(Note $note, NotesRequest $request)
     {
+
         $note->update(request()->all());
 
         return redirect('/notes');

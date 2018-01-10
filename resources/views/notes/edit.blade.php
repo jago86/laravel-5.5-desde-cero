@@ -10,6 +10,8 @@
     {{ csrf_field() }}
     <legend>Editar nota</legend>
 
+    @include('layouts._validation-errors')
+
     @include('notes._form')
 
     <button type="submit" class="btn btn-primary">Actualizar</button>
