@@ -6,42 +6,56 @@
 
 @section('content')
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Nota</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($notes as $note)
-                <tr>
-                    <td>
-                        <a href="/notes/{{ $note->id }}">
-                            {{ $note->title }}
+    <div class="row">
+        <div class="col-md-2">
+            <h4>Grupos</h4>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="">--Ninguno--</a></li>
+                @foreach ($groups as $group)
+                    <li class="list-group-item"><a href="">{{ $group->name }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nota</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($notes as $note)
+                        <tr>
+                            <td>
+                                <a href="/notes/{{ $note->id }}">
+                                    {{ $note->title }}
 
-                            @if ($note->isImportant())
-                                *
-                            @endif
-                        </a>
-                    </td>
-                    <td>
-                        <a href="/notes/{{ $note->id }}/edit" class="btn btn-primary btn-sm">Editar</a>
-                    </td>
-                    <td>
-                        <form action="/notes/{{ $note->id }}" method="POST">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button type="button" class="btn btn-danger btn-sm btn-delete">Eliminar</button>
-                        </form>
-                    </td>
+                                    @if ($note->isImportant())
+                                        *
+                                    @endif
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/notes/{{ $note->id }}/edit" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <form action="/notes/{{ $note->id }}" method="POST">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button type="button" class="btn btn-danger btn-sm btn-delete">Eliminar</button>
+                                </form>
+                            </td>
 
-                </tr>
-            @endforeach
+                        </tr>
+                    @endforeach
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 @endsection
 
 @section('scripts')

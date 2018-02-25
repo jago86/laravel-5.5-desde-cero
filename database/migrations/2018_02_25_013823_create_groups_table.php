@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserIdColumnToNotesTable extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddUserIdColumnToNotesTable extends Migration
      */
     public function up()
     {
-        Schema::table('notes', function (Blueprint $table) {
-            // $table->integer('user_id')->unsigned()->after('id');
-
-            // $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -27,5 +27,6 @@ class AddUserIdColumnToNotesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('groups');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Note;
+use App\Group;
 use Illuminate\Http\Request;
 use App\Http\Requests\NotesRequest;
 
@@ -10,9 +11,10 @@ class NotesController extends Controller
 {
     public function index()
     {
+        $groups = Group::all();
         $notes = Note::all();
 
-        return view('notes/index', ['notes' => $notes]);
+        return view('notes/index', compact('notes', 'groups'));
     }
 
     public function show(Note $note)
@@ -22,13 +24,14 @@ class NotesController extends Controller
 
     public function create()
     {
-        return view('notes.create');
+        $groups = Group::all();
+        return view('notes.create', compact('groups'));
     }
 
     public function store(NotesRequest $request)
     {
-
-        Note::create(request()->all());
+        // dd($request->all());
+        $note = Note::create(request()->all());
 
         return redirect('/notes');
     }

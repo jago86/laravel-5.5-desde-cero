@@ -8,6 +8,16 @@
     <textarea name="body" class="form-control" id="" placeholder="Escriba la nota">{{ old('body', isset($note) ? $note->body : '') }}</textarea>
 </div>
 
+<div class="form-group">
+    <label for="">Grupo</label>
+    <select class="form-control" name="group_id">
+        <option value="">--Ninguno--</option>
+        @foreach ($groups as $group)
+            <option value="{{ $group->id }}">{{ $group->name }}</option>
+        @endforeach
+    </select>
+</div>
+
 <div class="checkbox">
     <label>
         <input type="hidden" name="important" value="0">
