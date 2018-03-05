@@ -12,4 +12,9 @@ class Note extends Model
     {
         return $this->important == 1;
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

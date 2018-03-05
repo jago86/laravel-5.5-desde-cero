@@ -4,7 +4,8 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-Route::get('/notes', 'NotesController@index');
+Route::get('/notes', 'NotesWithoutGroupController@index');
+Route::get('/groups/{group}/notes', 'NotesController@index');
 
 Route::get('/notes/create', 'NotesController@create');
 Route::get('/notes/{note}', 'NotesController@show');

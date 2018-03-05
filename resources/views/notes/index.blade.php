@@ -10,9 +10,9 @@
         <div class="col-md-2">
             <h4>Grupos</h4>
             <ul class="list-group">
-                <li class="list-group-item"><a href="">--Ninguno--</a></li>
+                <li class="list-group-item"><a href="/notes">--Ninguno--</a></li>
                 @foreach ($groups as $group)
-                    <li class="list-group-item"><a href="">{{ $group->name }}</a></li>
+                    <li class="list-group-item"><a href="/groups/{{ $group->id }}/notes">{{ $group->name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>Nota</th>
+                        <th>Grupo</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -36,6 +37,11 @@
                                         *
                                     @endif
                                 </a>
+                            </td>
+                            <td>
+                                @if ($note->group_id != null)
+                                    <label class="label label-info">{{ $note->group->name }}</label>
+                                @endif
                             </td>
                             <td>
                                 <a href="/notes/{{ $note->id }}/edit" class="btn btn-primary btn-sm">Editar</a>

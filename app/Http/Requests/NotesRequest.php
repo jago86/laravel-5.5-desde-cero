@@ -25,7 +25,7 @@ class NotesRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'body' => 'required|min:20',
+            'body' => 'required|min:10',
         ];
     }
 }

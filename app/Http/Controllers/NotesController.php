@@ -9,10 +9,10 @@ use App\Http\Requests\NotesRequest;
 
 class NotesController extends Controller
 {
-    public function index()
+    public function index(Group $group)
     {
         $groups = Group::all();
-        $notes = Note::all();
+        $notes = $group->notes;
 
         return view('notes/index', compact('notes', 'groups'));
     }
@@ -38,7 +38,8 @@ class NotesController extends Controller
 
     public function edit(Note $note)
     {
-        return view('notes.edit', compact('note'));
+        $groups = Group::all();
+        return view('notes.edit', compact('note', 'groups'));
     }
 
     public function update(Note $note, NotesRequest $request)
