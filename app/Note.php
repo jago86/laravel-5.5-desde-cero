@@ -17,4 +17,9 @@ class Note extends Model
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function scopeWithoutGroup($query)
+    {
+        return $query->whereNull('group_id');
+    }
 }
