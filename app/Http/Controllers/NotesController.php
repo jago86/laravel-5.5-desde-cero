@@ -24,7 +24,7 @@ class NotesController extends Controller
 
     public function create()
     {
-        $groups = Group::all();
+        $groups = Group::pluck('name', 'id');
         return view('notes.create', compact('groups'));
     }
 
@@ -38,7 +38,7 @@ class NotesController extends Controller
 
     public function edit(Note $note)
     {
-        $groups = Group::all();
+        $groups = Group::pluck('name', 'id');
         return view('notes.edit', compact('note', 'groups'));
     }
 
