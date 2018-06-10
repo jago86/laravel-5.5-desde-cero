@@ -20,18 +20,21 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="{{ Request::is('notes') ? 'active' :'' }} dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notas <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/notes">Ver</a></li>
-                <li><a href="/notes/create">Crear</a></li>
-              </ul>
-            </li>
-            <li class="{{ Request::is('contact') ? 'active' :'' }}"><a href="/contact">Contacto</a></li>
-          </ul>
+          @if (Auth::check())
+            <ul class="nav navbar-nav">
+              <li class="{{ Request::is('notes') ? 'active' :'' }} dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notas <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/notes">Ver</a></li>
+                  <li><a href="/notes/create">Crear</a></li>
+                </ul>
+              </li>
+              <li class="{{ Request::is('contact') ? 'active' :'' }}"><a href="/contact">Contacto</a></li>
+            </ul>
+          @endif
 
           <ul class="nav navbar-nav navbar-right">
+
             <!-- Authentication Links -->
             @guest
                 <li><a href="{{ route('login') }}">Iniciar sesión</a></li>

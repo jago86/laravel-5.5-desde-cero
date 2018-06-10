@@ -11,7 +11,7 @@ class NotesWithoutGroupController extends Controller
     public function index()
     {
         $groups = Group::all();
-        $notes = Note::withoutGroup()->get();
+        $notes = \Auth::user()->notes()->withoutGroup()->get();
 
         return view('notes/index', compact('notes', 'groups'));
     }

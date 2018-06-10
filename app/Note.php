@@ -22,4 +22,9 @@ class Note extends Model
     {
         return $query->whereNull('group_id');
     }
+
+    public function scopeBelongsTo($query, $group)
+    {
+        return $query->where('group_id', $group->id);
+    }
 }

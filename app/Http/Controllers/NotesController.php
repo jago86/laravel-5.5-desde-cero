@@ -12,7 +12,7 @@ class NotesController extends Controller
     public function index(Group $group)
     {
         $groups = Group::all();
-        $notes = $group->notes;
+        $notes = \Auth::user()->notes()->belongsTo($group)->get();
 
         return view('notes/index', compact('notes', 'groups'));
     }
@@ -30,8 +30,8 @@ class NotesController extends Controller
 
     public function store(NotesRequest $request)
     {
-        // dd($request->all());
-        $note = Note::create(request()->all());
+        $note = new Note(request()->all());
+        Auth::user()->notes()->save($note);
 
         return redirect('/notes');
     }
