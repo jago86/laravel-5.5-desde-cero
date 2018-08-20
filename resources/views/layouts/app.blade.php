@@ -29,6 +29,14 @@
                   <li><a href="/notes/create">Crear</a></li>
                 </ul>
               </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Últimas notas <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  @foreach ($lastNotes as $note)
+                    <li><a href="/notes/{{ $note->id }}">{{ $note->title }}</a></li>
+                  @endforeach
+                </ul>
+              </li>
               <li class="{{ Request::is('contact') ? 'active' :'' }}"><a href="/contact">Contacto</a></li>
             </ul>
           @endif

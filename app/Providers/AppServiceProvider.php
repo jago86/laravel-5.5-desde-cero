@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \View::composer('layouts.app', function($view) {
+            if (\Auth::check()) {
+                $lastNotes = \Auth::user()->notes()->latest()->take(2)->get();
+                $view->with('lastNotes', $lastNotes);
+            }
+        });
     }
 
     /**
